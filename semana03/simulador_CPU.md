@@ -12,13 +12,13 @@ O objetivo da semana 02 se consistia em, criar um programa que contasse de 0 a u
         INP          // O usuário digita o limite (ex: 5)
         STA limite   // Salva esse valor na memória
         
-        LDA zero     // Começa o contador em 0
+        LDA zero     // Começa o contador em 0 (carrega o contador)
 loop    STA atual    // Salva o progresso do contador
         OUT          // Exibe o número atual no Output
         
         // Verificação: Caso o limite seja 0 o programa para
         LDA limite   
-        SUB atual    // Faz (Limite - Atual), o limite voltará a ser 10 no próximo loop
+        SUB atual    // Faz (Limite - Atual), o limite voltará a ser o INP no próximo loop
         BRZ fim      // Se o resultado for 0, pula para o fim
         
         // Incremento
@@ -49,7 +49,6 @@ loop    STA atual
         SUB atual    
         BRZ fim      
         
-        // Incremento
         LDA atual    
         ADD um       
         BRA loop     
