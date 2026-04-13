@@ -1,14 +1,17 @@
 # Semana 03
 
-O objetivo da semana 02 se consistia em, criar um programa que resolvesse uma função matemática usando a linguagem do Litte Man Computer.
+O objetivo da semana 03 se consistia em, criar um programa que resolvesse uma função matemática usando a linguagem do Litte Man Computer.
 
-Fiz uma progreção onde dado um valor inicial, um valor final e uma razão, o código vai do valor inicial até o valor final saltando de acordo com a razão.
+Fiz uma progressão onde dado um valor inicial, um valor final e uma razão, o código vai do valor inicial até o valor final saltando de acordo com a razão.
 
-
+Exemplo, I = 0, F = 10, R = 2
+Teremos um conjunto {0,2,4,6,8,10}
 ---
+### Fluxograma
+![Fluxograma](Fluxograma_Semana03.png)
 
 ### Abaixo o código desenvolvido com alguns comentários sobre seu funcionamento
-> Logo depois o código sem comentários.
+> Logo depois, código sem comentários.
 
 ```
         INP             // Lê o valor inicial
@@ -28,7 +31,7 @@ loopSalto STA atual     // Salva o valor que será processado agora
         SUB limite      // Faz: (atual - limite)
         BRP fim         // Se (atual >= limite), pula para o fim do programa
 
-incremento LDA atual    // Se não parou, pega o atual de volta
+        LDA atual       // Se não parou, pega o atual de volta
         ADD salto       // Soma o valor do pulo/razão
         BRA loopSalto   // Volta para o início do laço para mostrar o novo valor
 
