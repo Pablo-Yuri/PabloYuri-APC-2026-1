@@ -1,0 +1,73 @@
+{
+  "id": 4,
+  "ctime": "2026-03-18 16:08:19",
+  "mtime": "2026-03-18 16:57:20",
+  "name": "Pablo Yuri - 251027307",
+  "json": {
+    "projectVersion": 1,
+    "currentSprite": 4,
+    "size": {
+      "width": 640,
+      "height": 360
+    },
+    "backdrops": [
+      {
+        "name": "field",
+        "path": "backdrops/field.jpg"
+      },
+      {
+        "name": "stage",
+        "path": "backdrops/stage.jpg"
+      }
+    ],
+    "sprites": {
+      "Person_standing1": {
+        "name": "Person standing",
+        "xcor": -20,
+        "ycor": -46.7,
+        "code": [
+          ["onflag", ["move", 150], ["speak", "Olá! me chamo Pablo, toque em um dos instrumentos para escutar o seu som."]]
+        ]
+      },
+      "Trumpet1": {
+        "name": "Trumpet",
+        "xcor": 204.8,
+        "ycor": -66.6,
+        "code": [
+          ["ontap", ["move", 100, 270], ["setsize", 150], ["setbackdrop", 1], ["playSound", "trumpet"], ["setsize", 100], ["setbackdrop", 0], ["move", 100, 90]]
+        ]
+      },
+      "Yellow_flute1": {
+        "name": "Yellow flute",
+        "xcor": -133.1,
+        "ycor": 102.9,
+        "code": [
+          ["ontap", ["move", 100, 135], ["setsize", 150], ["setbackdrop", 1], ["playSound", "flute"], ["setsize", 100], ["setbackdrop", 0], ["move", 100, 300]]
+        ]
+      },
+      "Violin1": {
+        "name": "Violin",
+        "xcor": -210.2,
+        "ycor": -76.2,
+        "code": [
+          ["ontap", ["move", 100, 90], ["setsize", 150], ["setbackdrop", 1], ["playSound", "violin"], ["setsize", 100], ["setbackdrop", 0], ["move", 100, 270]]
+        ]
+      },
+      "Drum1": {
+        "name": "Drum",
+        "xcor": 111.8,
+        "ycor": 102.4,
+        "code": [
+          ["ontap", ["move", 90, 225], ["setsize", 150], ["setbackdrop", 1], ["repeat", 3, ["playSound", "drum"]], ["setsize", 100], ["setbackdrop", 0], ["move", 90, 45]]
+        ]
+      }
+    },
+    "sounds": [
+      "chime.mp3",
+      "trumpet.mp3",
+      "flute.mp3",
+      "violin.mp3",
+      "drum-2.mp3"
+    ]
+  }
+}
