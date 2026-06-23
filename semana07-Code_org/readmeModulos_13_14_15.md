@@ -78,7 +78,7 @@ Movimentar um inseto com as setas e alterar sua animação de acordo com a dire�
 // Cria o sprite da mosca/inseto com a animação inicial
 var bug = createSprite(200, 200);
 bug.setAnimation("fly_L");
-
+OFF30
 function draw() {
   // Fundo da cena
   background("white");
