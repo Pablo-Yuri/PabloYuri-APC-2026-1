@@ -44,7 +44,7 @@ LIMITES_RENDA = [0, 900, 1412, 2824, float("inf")]
 ROTULOS_RENDA = ["ate 900", "901-1412", "1413-2824", "acima de 2824"]
 COLUNAS_EXIBICAO = ["morador_id", "localidade", "idade_calculada", "renda_ind", "G01", "G05", "id_genero", "escolaridade"]
 
-
+#=================================================
 def rotulo_ra(codigo: int | float | str) -> str:
     """Return a readable label for a RA code."""
     try:
@@ -53,6 +53,7 @@ def rotulo_ra(codigo: int | float | str) -> str:
         return str(codigo)
     print(f"rotulo_ra: codigo={codigo}, codigo_int={codigo_int}, nome={NOMES_RA.get(codigo_int, 'RA')}")
     return f"{NOMES_RA.get(codigo_int, 'RA')} ({codigo_int})"
+#=================================================
 
 
 def faixa_idade(serie: pd.Series) -> pd.Series:
