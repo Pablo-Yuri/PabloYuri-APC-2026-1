@@ -1,0 +1,79 @@
+# Guia de Instalação e Configuração: 
+AWS AmplifyEste guia aborda desde os pré-requisitos locais até a inicialização de um projeto funcional utilizando o AWS Amplify.
+
+---
+1. Pré-requisitosAntes de começar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+- Node.js: Versão 18.16.0 ou superior.
+- npm (ou yarn/pnpm).
+- Conta AWS: Uma conta ativa com permissões de Administrador.
+
+___
+
+2. Passo 1: Instalação do Amplify CLI
+Embora o Gen 2 utilize comandos via npx, ainda é recomendado ter a CLI clássica para gerenciar configurações globais e perfis.
+
+
+### Instalar CLI
+```bash
+npm install -g @aws-amplify/cli
+```
+
+3. Passo 2: Configuração das Credenciais AWS
+Você precisa conectar o Amplify à sua conta AWS. Execute o comando abaixo e siga as instruções no navegador:
+
+```
+Bash
+
+amplify configure
+```
+
+O que este comando faz:
+> Abre o Console AWS para você fazer login.
+> Solicita a criação de um IAM User (ex: amplify-user).
+> Fornece o Access Key ID e o Secret Access Key.
+> Salva um perfil local no seu computador (geralmente chamado de default).
+
+4. Passo 3: Inicializando um Projeto (Frontend)
+O Amplify geralmente é adicionado a um framework existente (React, Next.js, Vue, etc.). Vamos usar o Next.js como exemplo:
+
+```Bash# Criar projeto Next.js
+npx create-next-app@latest meu-projeto-amplify
+cd meu-projeto-amplify
+```
+
+
+# Inicializar o Amplify Gen 2
+```
+npm create amplify@latest
+```
+
+Passo 4: Estrutura do Amplify Gen 2
+Após o comando acima, uma pasta chamada amplify/ será criada na raiz do seu projeto. É aqui que a "mágica" acontece:
+
+amplify/auth/resource.ts: Configuração de autenticação (Cognito).
+amplify/data/resource.ts: Configuração do Banco de Dados (AppSync/DynamoDB).
+amplify/backend.ts: Ponto de entrada central para o backend.
+
+Passo 5: Implantando o Sandbox de DesenvolvimentoPara testar suas alterações de backend em tempo real, use o Cloud Sandbox. Ele cria um ambiente isolado na nuvem para você:Bashnpx ampx sandbox
+Nota: Mantenha este terminal aberto enquanto desenvolve. Ele gera automaticamente o arquivo amplify_outputs.json, necessário para o frontend se conectar aos serviços.
+
+Passo 6: Conectando o Frontend ao Amplify
+Instale as bibliotecas de cliente para que seu código possa falar com a AWS:
+
+```
+Bash
+
+npm install aws-amplify @aws-amplify/ui-react
+```
+No seu arquivo principal (ex: layout.tsx ou _app.tsx), configure o Amplify:
+
+```
+JavaScript
+
+import { Amplify } from 'aws-amplify';
+import outputs from '@/amplify_outputs.json';
+Amplify.configure(outputs);
+```
+
+Comandos ÚteisComandoDescriçãonpx ampx sandboxInicia o ambiente de desenvolvimento em nuvem.npx ampx pipeline-deployUsado em CI/CD para implantar em produção.npx ampx generate formsGera componentes de formulário baseados no seu schema de dados.amplify consoleAbre o console web do Amplify para gerenciar o app.9. Próximos PassosDefina seu Schema: Edite amplify/data/resource.ts para criar tabelas.Adicione Auth: Configure provedores sociais (Google/Facebook) em amplify/auth/resource.ts.Deploy: Conecte seu repositório GitHub ao Console do AWS Amplify para deploys automáticos.Documentação gerada em: 06/04/2026

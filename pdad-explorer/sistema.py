@@ -71,7 +71,7 @@ def criar_dashboard(df_moradores):
         df_idade_limpa = df_filtrado[~df_filtrado["idade_calculada"].isin([88888, 99999])]
         
         # Relatório de texto
-        texto_stats.insert(tk.END, "📊 RELATÓRIO INDIVIDUAL POR RA\n")
+        texto_stats.insert(tk.END, "RELATÓRIO INDIVIDUAL POR RA\n")
         texto_stats.insert(tk.END, "="*40 + "\n\n")
         
         grupos_ra = df_filtrado.groupby("localidade")
@@ -80,7 +80,7 @@ def criar_dashboard(df_moradores):
             df_idade_ra = df_idade_limpa[df_idade_limpa["localidade"] == ra]
             media_idade = df_idade_ra["idade_calculada"].mean() if not df_idade_ra.empty else 0
             
-            texto_stats.insert(tk.END, f"📍 {ra}\n")
+            texto_stats.insert(tk.END, f"RA - {ra}\n")
             texto_stats.insert(tk.END, f"  • Moradores: {total_ra:,} | Média Idade Válida: {media_idade:.1f} anos\n")
             
             contagem = df_grupo[coluna_alvo].value_counts()
@@ -104,24 +104,6 @@ def criar_dashboard(df_moradores):
         carregar_tabela(df_filtrado)
         atualizar_estatisticas_e_grafico(df_filtrado)
         return df_filtrado
-
-    # def abrir_janela_metodologia():
-    #     """DIFERENCIAL D5: Janela secundária com Toplevel."""
-    #     janela_sobre = tk.Toplevel(janela)
-    #     janela_sobre.title("Sobre o Recorte C")
-    #     janela_sobre.geometry("450x250")
-    #     janela_sobre.grab_set() 
-        
-    #     ttk.Label(janela_sobre, text="Recorte C: Saúde e Acesso a Serviços", font=("Arial", 11, "bold")).pack(pady=10)
-    #     descricao = (
-    #         "Este painel explora a cobertura de planos de saúde e \n"
-    #         "a utilização de serviços médicos no Distrito Federal.\n\n"
-    #         "Ao aplicar os filtros de Região Administrativa (RA), \n"
-    #         "o sistema calcula distribuições estatísticas tratando \n"
-    #         "corretamente os valores sentinela (88888 e 99999)."
-    #     )
-    #     tk.Label(janela_sobre, text=descricao, justify="center").pack(pady=10)
-    #     ttk.Button(janela_sobre, text="Fechar", command=janela_sobre.destroy).pack(pady=10)
 
     # --- UI Tkinter ---
     janela = tk.Tk()
