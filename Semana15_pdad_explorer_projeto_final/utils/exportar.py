@@ -26,18 +26,18 @@ def exportar_tabela_csv(df) -> None:
     )
     if not caminho:
         return
-    
+
     previa = df.copy()
     colunas_presentes = [coluna for coluna in COLUNAS_EXIBICAO if coluna in previa.columns]
     previa = previa.loc[:, colunas_presentes]
-    
+
     nomes_exibicao = {
         "A01uf": "UF", "localidade": "Localidade / RA", "morador_id": "ID Morador",
         "idade_calculada": "Idade", "G01": "Atendimento? (12m)", "G02": "Tipo Consulta",
         "G03": "Emergência?", "G04": "Local", "G05": "Tem Plano?", "G06": "Filhos?",
         "G06_1": "Qtd Filhos", "G06_2": "Idade 1º Filho", "renda_ind": "Renda Ind."
     }
-    
+
     previa.rename(columns=nomes_exibicao, inplace=True)
     previa.to_csv(caminho, index=False, encoding="utf-8-sig")
     messagebox.showinfo("Sucesso", f"Arquivo CSV guardado em:\n{caminho}")
