@@ -22,9 +22,7 @@ from utils.carregar_dados import (
     RA_NOMES
 )
 
-# REQUISITO 6: valores sentinela já traduzidos para texto pelos dicionários
-# de carregar_dados.py; precisam ser excluídos antes de qualquer contagem
-# ou percentual, para não distorcer a análise.
+
 SENTINELAS_TEXTO = ["Não sabe", "Não se aplica"]
 
 
@@ -63,7 +61,6 @@ def criar_dashboard(df_moradores):
         total_base = len(df_moradores)
         total_filtro = len(df_filtrado)
         
-        # REQUISITO 4: Uso de tk.Label formatado com f-string (Labels estáticos fixos na tela)
         lbl_resumo_estatico.config(text=f"Filtrados: {total_filtro:,} de {total_base:,} moradores")
         
         if df_filtrado.empty:
@@ -119,7 +116,6 @@ def criar_dashboard(df_moradores):
 
         texto_stats.config(state="disabled")
 
-        # REQUISITO 6: o gráfico também exclui sentinelas antes de contar
         df_grafico_valido = df_filtrado[~df_filtrado[coluna_alvo].isin(SENTINELAS_TEXTO)]
         atualizar_grafico_barras(eixo, canvas, df_grafico_valido, coluna_alvo, nome_amigavel)
 
